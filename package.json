@@ -1,0 +1,16 @@
+{
+  "name": "webauthnproject",
+  "version": "1.0.0",
+  "description": "A full stack application that incorporates WebAuthN standard allowing password free authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js"
+  },
+  "author": "Rita Law",
+  "license": "MIT",
+  "dependencies": {
+    "nunjucks": "^3.2.0",
+    "webauthn": "^0.1.2"
+  }
+}
