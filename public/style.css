@@ -1,5 +1,19 @@
-html {
+body {
 background: rgb(238,174,202);
 background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 font-family: poppins;
+}
+
+.main {
+  display: flex;
+  flex-direction: column
+}
+
+#title {
+  padding-top: 2vw;
+}
+
+#content {
+  padding-right: 2vw;
+  padding-left: 2vw;
 }
