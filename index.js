@@ -20,6 +20,8 @@ const bodyParser=require("body-parser");
 const session=require("express-session");
 const uuidv1=require("uuid/v1");
 const sql=require("sql");
+const crypto=require("crypto");
+const base64url=require("base64url")
 sql.setDialect('postgres');
 sql.select();
 
@@ -27,6 +29,27 @@ let user=sql.define({
   name:"User",
   columns:["ID", "Username", "Display Name", "Last Login", "PublicKeyCredential"]
 });
+
+// Generate challenge function
+let challengeGenerator = ()=>{
+  let len = 32;
+  let buffer = crypto.randomBytes(len);
+  return base64url(buffer);
+};
+
+let makeCredential = (userID, displayName, name)=>{
+  return {
+    challenge: challengeGenerator(),
+    rpName: {"Rita's WebAuthN"},
+    user:{
+      username: displayName,
+      name: name,
+      userID: userID
+    }
+
+  }
+};
+
 
 app.use(session({
   secret:process.env.SESSION_SECRET,
@@ -45,7 +68,8 @@ const webauthn= new WebAuthN({
   usernameField: "username",
   userFields:{
     username: "username",
-    name: "displayName"
+    name: "displayName",
+    userID: "userID"
   },
   rpName:"Rita's WebAuthN"
 });
@@ -78,6 +102,8 @@ app.get("/secret",webauthn.authenticate(), (req, res)=>{
 app.get("/", (req, res)=>{
   res.render("index.html", {title:"WebAuthN Application"});
 });
+
+/* middleware to confirm authentication */
 
 /*
 app.post("/register", (req, res)=>{
