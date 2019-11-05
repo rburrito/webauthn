@@ -20,6 +20,7 @@ const bodyParser=require("body-parser");
 const session=require("express-session");
 const uuidv1=require("uuid/v1");
 const sql=require("sql");
+const sql-injection=require("sql-injection");
 const crypto=require("crypto");
 const base64url=require("base64url")
 sql.setDialect('postgres');
