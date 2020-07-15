@@ -13,11 +13,11 @@
     "base64url": "^3.0.1",
     "body-parser": "^1.19.0",
     "crypto": "^1.0.1",
-    "express-session": "^1.17.0",
-    "nunjucks": "^3.2.0",
+    "express-session": "^1.17.1",
+    "nunjucks": "^3.2.1",
     "sql": "^0.78.0",
     "sql-injection": "0.0.6",
-    "uuid": "^3.3.3",
+    "uuid": "^3.4.0",
     "webauthn": "^0.1.2"
   }
 }
